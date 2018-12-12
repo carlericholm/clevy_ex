@@ -14,6 +14,7 @@ const ARG = process.argv[2];
 
 const request = new recastai.request(RECAST_TOKEN);
 
+// Request to recast.ai
 request.analyseText(ARG)
 .then((res) => {
     // get the intent detected
@@ -22,7 +23,7 @@ request.analyseText(ARG)
     {
       tools.logResult(intent, GET_NAME_API, ARG);
     }
-		else
+	else
 			console.log(' // Sorry, unknown intent');
 	})
 	.catch((err) => {

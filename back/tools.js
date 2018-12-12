@@ -4,6 +4,7 @@ const csv = require('fast-csv');
 const stream = fs.createReadStream("answers.csv");
 var con = require('../config/database');
 
+// Fetch API to get random name
 const getName = (GET_NAME_API) => {
 	return fetch(GET_NAME_API)
 		.then(res => res.json())
@@ -15,6 +16,7 @@ const getName = (GET_NAME_API) => {
 		});
 };
 
+// Add question / answer into DB
 const addLogDb = (question, answer) => {
 	var sql = "INSERT INTO logs set question = ?, answer = ?";
 	con.query(sql, [question, answer],(err) => { if (err) throw err;});
