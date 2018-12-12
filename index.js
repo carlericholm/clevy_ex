@@ -1,4 +1,4 @@
-var con = require('./config/database');
+const con = require('./config/database');
 const express = require('express');
 const app = express();
 
@@ -15,11 +15,13 @@ const ARG = process.argv[2];
 const request = new recastai.request(RECAST_TOKEN);
 
 request.analyseText(ARG)
-	.then((res) => {
-		// get the intent detected
-		var intent = res.intent();
-		if (intent)
-			tools.logResult(intent, GET_NAME_API, ARG);
+.then((res) => {
+    // get the intent detected
+    const intent = res.intent();
+    if (intent)
+    {
+      tools.logResult(intent, GET_NAME_API, ARG);
+    }
 		else
 			console.log(' // Sorry, unknown intent');
 	})
